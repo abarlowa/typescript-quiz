@@ -2,6 +2,12 @@ import React, { useState } from 'react';
 import { fetchQuizQuestions, Difficulty, QuestionState } from './API';
 import QuestionCard from './components/QuestionCard';
 
+export type AnswerObject = {
+	question: string;
+	answer: string;
+	correct: boolean;
+	correctAnswer: string;
+};
 function App() {
 	const [isLoading, setIsLoading] = useState(false);
 	const [questions, setQuestions] = useState<QuestionState[]>([]);
@@ -11,13 +17,6 @@ function App() {
 	const [gameOver, setGameOver] = useState(true);
 
 	const TOTAL_QUESTIONS = 10;
-
-	type AnswerObject = {
-		question: string;
-		answer: string;
-		correct: boolean;
-		correctAnswer: string;
-	};
 
 	async function startTrivia() {
 		setIsLoading(true);
